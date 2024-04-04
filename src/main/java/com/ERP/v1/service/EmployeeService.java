@@ -60,7 +60,6 @@ public class EmployeeService {
             if (emp.getEmail().equals(email))
             {
                 employeeRepository.deleteById(emp.getId());
-                break;
             }
         }
     }
