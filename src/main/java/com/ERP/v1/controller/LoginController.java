@@ -25,7 +25,6 @@ public class LoginController {
     @Autowired
     EnterpriseService enterpriseService;
 
-    // Default URL
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String noUrl()
     {
