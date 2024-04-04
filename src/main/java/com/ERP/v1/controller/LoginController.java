@@ -25,6 +25,12 @@ public class LoginController {
     @Autowired
     EnterpriseService enterpriseService;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public String noUrl()
+    {
+        return "redirect:/login";
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public ModelAndView login()
     {
@@ -59,7 +65,7 @@ public class LoginController {
             enterpriseRegistrationDto.getAddress(), 
             enterpriseRegistrationDto.getDomain()
             );
-            
+
         enterpriseService.createEnterprise(enterpriseDto);
 
         Enterprise enterprise = enterpriseService.getEnterprise(enterpriseRegistrationDto.getDomain());
