@@ -34,6 +34,13 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    public ModelAndView postLogin()
+    {
+        ModelAndView modelAndView = new ModelAndView("hello");
+        return modelAndView;
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
     public ModelAndView registration()
     {
@@ -52,14 +59,26 @@ public class LoginController {
             enterpriseRegistrationDto.getAddress(), 
             enterpriseRegistrationDto.getDomain()
             );
+            
         enterpriseService.createEnterprise(enterpriseDto);
 
         Enterprise enterprise = enterpriseService.getEnterprise(enterpriseRegistrationDto.getDomain());
-        EmployeeDto employeeDto = new EmployeeDto("admin", enterpriseRegistrationDto.getEmail(), enterpriseRegistrationDto.getPassword(), "ADMIN");
+        EmployeeDto employeeDto = new EmployeeDto(
+            "admin", 
+            enterpriseRegistrationDto.getEmail(), 
+            enterpriseRegistrationDto.getPassword(), 
+            "ADMIN"
+        );
 
         employeeService.createEmployee(employeeDto, enterprise);
 
         return "redirect:/login";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/hello")
+    public ModelAndView helloUser()
+    {
+        return new ModelAndView("hello");
     }
 
 }

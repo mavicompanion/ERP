@@ -13,7 +13,7 @@
                 Login
             </div>
             <div class="card-body" style="padding: 50px;">
-                <form method="post" th:action="@{/login}">
+                <form th:action="@{/login}" method="post">
                     <div class="mb-3">
                         <label for="enterprise" class="form-label">Enterprise</label>
                         <select class="form-select" id="enterprise" aria-label="Select Enterprise">
@@ -22,13 +22,13 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="username" placeholder="Enter email">
-                    </div>
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+                      </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                      </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
