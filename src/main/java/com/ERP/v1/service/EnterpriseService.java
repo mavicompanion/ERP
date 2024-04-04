@@ -1,5 +1,6 @@
 package com.ERP.v1.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class EnterpriseService {
     // Service method to get all enterprise domain;
     public List<String> getAllDomains()
     {
-        List<String> domains = Arrays.asList();
+        List<String> domains = new ArrayList<>();
         List<Enterprise>  enterprises = this.getAllEnterprises();
         for(Enterprise enterprise : enterprises)
         {
