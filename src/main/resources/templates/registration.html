@@ -13,30 +13,30 @@
                 <h1>Enterprise Registration</h1>
             </div>
             <div class="card-body" style="padding: 40px;">
-                <form>
+                <form th:action="@{/registration}" method="post">
                     <div class="mb-3">
                         <label for="enterpriseName" class="form-label">Enterprise Name</label>
-                        <input type="text" class="form-control" id="enterpriseName" placeholder="Enter Enterprise Name" required>
+                        <input type="text" class="form-control" id="enterpriseName" placeholder="Enter Enterprise Name" th:field="${registrationDto.name}" required>
                     </div>
                     <div class="mb-3">
                         <label for="enterpriseDomain" class="form-label">Enterprise Domain</label>
-                        <input type="text" class="form-control" id="enterpriseDomain" placeholder="Enter Enterprise Domain" required>
+                        <input type="text" class="form-control" id="enterpriseDomain" placeholder="Enter Enterprise Domain" th:field="${registrationDto.domain}" required>
                     </div>
                     <div class="mb-3">
                         <label for="adminEmail" class="form-label">Admin Email</label>
-                        <input type="email" class="form-control" id="adminEmail" placeholder="Enter Admin Email" required>
+                        <input type="email" class="form-control" id="adminEmail" placeholder="Enter Admin Email" th:field="${registrationDto.email}" required>
                     </div>
                     <div class="mb-3">
                         <label for="adminPassword" class="form-label">Admin Password</label>
-                        <input type="password" class="form-control" id="adminPassword" placeholder="Enter Admin Password" required>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Enter Admin Password" th:field="${registrationDto.password}" required>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Enterprise Description</label>
-                        <textarea class="form-control" id="description" rows="3" placeholder="Write a brief description about your enterprise"></textarea>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Write a brief description about your enterprise" th:field="${registrationDto.description}" ></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Enterprise Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="Enter Enterprise Address">
+                        <input type="text" class="form-control" id="address" placeholder="Enter Enterprise Address" th:field="${registrationDto.address}" >
                     </div>
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
