@@ -79,7 +79,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="employee : ${employees}">
+                <tr th:each="employee : ${employees}" th:if="${employee.role != 'ADMIN'}">
                     <td th:text="${employee.id}">Id</td>
                     <td th:text="${employee.name}">Username</td>
                     <td th:text="${employee.email}">Email Id</td>
