@@ -38,6 +38,7 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .defaultSuccessUrl("/hello")
                 .permitAll()
+                .successHandler(new LoginSuccessHandler())
             )
             .logout((logout) -> logout.permitAll().logoutSuccessUrl("/login"))
             ;
