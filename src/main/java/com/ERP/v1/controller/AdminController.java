@@ -40,13 +40,13 @@ public class AdminController {
     {
         ModelAndView modelAndView = new ModelAndView("employeeRegistration");
         String userName = userDetails.getUsername();
-        modelAndView.addObject("userName", userName);
+        modelAndView.addObject("userEmail", userName);
         modelAndView.addObject("employees", employeeService.getAllEmployeesByDomain(employeeService.getDomainByEmail(userDetails.getUsername())));
         modelAndView.addObject("newUser", employeeDto);
         return modelAndView;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/employeeRegistration")
+    @RequestMapping(method = RequestMethod.POST, value = "/admin/employeeRegistration")
     public String registerEmployee(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute EmployeeDto employeeDto)
     {
         Enterprise enterprise = enterpriseService.getEnterprise(

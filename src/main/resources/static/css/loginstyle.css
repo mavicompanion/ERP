@@ -123,7 +123,7 @@ input,select{
 }
 
 h4{
-    color:white;
+    color:var(--clr-neutral-900);
     font:var(--ff-sans);
     font-size: var(--fs-normal);
     font-weight:var(--fw-Heading);
