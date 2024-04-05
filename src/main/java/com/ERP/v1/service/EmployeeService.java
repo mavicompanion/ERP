@@ -1,5 +1,6 @@
 package com.ERP.v1.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,38 @@ public class EmployeeService {
         }
     }
 
-    // Service method for updating a particular employee with email;
+    // Service method for gettingAllEmployees of an enterprise;
+    public List<Employee> getAllEmployeesByDomain(String domain)
+    {
+        List<Employee> employees = new ArrayList<>();
+
+        List<Employee> allEmployees = this.getAllEmployees();
+
+        for(Employee employee : allEmployees)
+        {
+            if (employee.getEnterprise().getDomain().equals(domain))
+            {
+                employees.add(employee);
+            }
+        }
+
+        return employees;
+    }
+
+    // Service method to get domain by email;
+    public String getDomainByEmail(String email)
+    {
+        List<Employee> employees = getAllEmployees();
+
+        for( Employee employee : employees)
+        {
+            if (employee.getEmail().equals(email))
+            {
+                return employee.getEnterprise().getDomain();
+            }
+        }
+
+        return null;
+    }
 
 }
