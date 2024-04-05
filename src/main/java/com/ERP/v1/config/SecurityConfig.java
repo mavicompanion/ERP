@@ -29,9 +29,8 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/registration").permitAll()
-                .requestMatchers("/admin").hasRole("ADMIN")
-                .requestMatchers("/employee").hasRole("EMPLOYEE")
-                .requestMatchers("/hello").hasAnyRole("EMPLOYEE","ADMIN")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/hello","/employee/**").hasAnyRole("EMPLOYEE","ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin((form) -> form
