@@ -51,7 +51,7 @@ public class LoginController {
     public ModelAndView registration()
     {
         EnterpriseRegistrationDto enterpriseRegistrationDto = new EnterpriseRegistrationDto();
-        ModelAndView modelAndView = new ModelAndView("registration");
+        ModelAndView modelAndView = new ModelAndView("enterpriseRegistration");
         modelAndView.addObject("registrationDto", enterpriseRegistrationDto);
         return modelAndView;
     }
