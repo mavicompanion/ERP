@@ -16,10 +16,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 </div>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <form th:action="@{/logout}" method="post">
-                        <button class="btn btn-tertiary" type="submit" value="Sign Out"/>Log Out</button>
-                    </form>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${userName}">
+                        <i class="fas fa-user-circle"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="nav-item">
+                            <form th:action="@{/logout}" method="post">
+                                <button class="btn btn-tertiary" type="submit" value="Sign Out"/>Log Out</button>
+                            </form>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
