@@ -24,7 +24,7 @@
       <div class="card-body">
         <form th:action="@{/login}" method="post">
             <div class="mb-3">
-                <label for="enterprise" class="form-label">Enterprise</label>
+                <label for="enterprise" class="form-label">Enterprise List</label>
                 <select class="form-select" id="enterprise" aria-label="Select Enterprise">
                     <option value="">Select Enterprise</option>
                     <option th:each="domain : ${domains}" th:value="${domain}" th:text="${domain}"></option>
@@ -32,14 +32,14 @@
             </div>  
           <div class="mb-3">
             <label for="username" class="form-label">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
           </div>
           <button type="submit" class="btn btn-primary">Login</button>
-          <div style="padding:10px;margin-top:10px;"><a href="/registration">Register enterprise</a></div>
+          <div style="padding:10px;margin-top:10px;"><a href="/registration">Register Enterprise</a></div>
         </form>
       </div>
     </div>
