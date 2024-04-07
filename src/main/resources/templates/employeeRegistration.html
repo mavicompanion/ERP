@@ -14,7 +14,7 @@
                 <a class="btn btn-tertiary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                     <img src = "" th:src="@{/images/hamburger.png}" height="22px" style="margin-right: 10px;">
                 </a>
-                <a class="navbar-brand" href="/admin/dashboard">Admin Dashboard</a>
+                <a class="navbar-brand" href="/dashboard">Dashboard</a>
             </div>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 account">
                 <li class="nav-item dropdown">
@@ -39,8 +39,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <a href="/admin/employeeRegistration" style="text-decoration: none;">User Registration</a>
-            <hr>
+            <div th:each="module : ${modules}">
+                <a th:if="${module.role_access == userRole}" th:href="${module.module_url}" style="text-decoration: none;" th:text="${module.module_name}">Employee Registration</a>
+            </div>
         </div>
     </div>
     <div class="container mt-3">
