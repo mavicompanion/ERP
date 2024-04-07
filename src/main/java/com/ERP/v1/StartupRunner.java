@@ -15,7 +15,10 @@ public class StartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         AppModule module = new AppModule( (long) 1, "Employee registration", "/admin/employeeRegistration", "ROLE_ADMIN");
+
+        AppModule module2 = new AppModule( (long) 2, "temp", "/dashboard", "ROLE_EMPLOYEE");
         moduleService.createModule(module);
+        moduleService.createModule(module2);
 
     }   
 }
