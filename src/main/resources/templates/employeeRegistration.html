@@ -81,7 +81,7 @@
             </thead>
             <tbody>
                 <tr th:each="employee : ${employees}" th:if="${employee.email != userEmail}">
-                    <td th:text="${employee.id}">Id</td>
+                    <td th:text="${employee.id - 1}">Id</td>
                     <td th:text="${employee.name}">Username</td>
                     <td th:text="${employee.email}">Email Id</td>
                     <td th:text="${employee.password}">Password</td>
