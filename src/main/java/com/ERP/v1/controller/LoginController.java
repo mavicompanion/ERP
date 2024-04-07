@@ -1,7 +1,5 @@
 package com.ERP.v1.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +32,6 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public ModelAndView login()
     {
-        List<String> domains = enterpriseService.getAllDomains();
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }

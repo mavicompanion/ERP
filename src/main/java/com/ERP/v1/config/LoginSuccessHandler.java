@@ -14,18 +14,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException{
-        String role = authentication.getAuthorities().iterator().next().getAuthority();
-        String redirectUrl;
-
-        // role of the user is stored as "ROLE_<role_name>";
-        if (role.equals("ROLE_ADMIN")) {
-            redirectUrl = "/admin/dashboard";
-        } else if (role.equals("ROLE_EMPLOYEE")) {
-            redirectUrl = "/employee/dashboard";
-        } else {
-            redirectUrl = "/login?error";
-        }
-
+        String redirectUrl = "/dashboard";
         response.sendRedirect(redirectUrl);
     }
     
