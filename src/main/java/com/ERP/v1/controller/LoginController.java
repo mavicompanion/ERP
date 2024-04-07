@@ -36,7 +36,6 @@ public class LoginController {
     {
         List<String> domains = enterpriseService.getAllDomains();
         ModelAndView modelAndView = new ModelAndView("login");
-        modelAndView.addObject("domains", domains);
         return modelAndView;
     }
 

@@ -36,14 +36,6 @@
                 <h4>Login</h4>
                 <p>Please fill your information below</p>
                 <form th:action="@{/login}" method="post">
-                    <div class="Enterprise form-control">
-                        <i class="ri-building-fill"></i>
-                        <select id="inputState" class="control select">
-                            <option value="">Select Enterprise</option>
-                            <option th:each="domain : ${domains}" th:value="${domain}" th:text="${domain}"></option>
-                        </select>
-                    </div>
-        
                     <div class="Email form-control">
                         <i class="ri-mail-fill"></i>
                         <input type="text" class="control" id="username" name="username" placeholder="Enter Username" required>
