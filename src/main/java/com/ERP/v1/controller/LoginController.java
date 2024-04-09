@@ -59,7 +59,7 @@ public class LoginController {
             enterpriseRegistrationDto.getName(), 
             enterpriseRegistrationDto.getDescription(), 
             enterpriseRegistrationDto.getAddress(), 
-            enterpriseRegistrationDto.getDomain()
+            enterpriseRegistrationDto.getDomain(),enterpriseRegistrationDto.getContact()
             );
 
         enterpriseService.createEnterprise(enterpriseDto);

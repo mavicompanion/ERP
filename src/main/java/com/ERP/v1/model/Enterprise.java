@@ -24,16 +24,23 @@ public class Enterprise {
     private String address;
     @Column(name = "enterprise_domain")
     private String domain;
+    @Column(name = "enterprise_contact")
+    private String contact;
     
     public Enterprise() {
     }
 
-    public Enterprise(String name, String description, String address, String domain) {
+    
+
+    public Enterprise(String name, String description, String address, String domain, String contact) {
         this.name = name;
         this.description = description;
         this.address = address;
         this.domain = domain;
+        this.contact = contact;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -73,6 +80,16 @@ public class Enterprise {
 
     public void setDomain(String domain) {
         this.domain = domain;
+    }
+
+
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     
