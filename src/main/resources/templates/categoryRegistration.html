@@ -43,52 +43,42 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3">
-        <form id="user-registration-form" method="post" th:action="@{/admin/employeeRegistration}" class="py-3"> 
-            <h2>User Registration</h2>
-            <div style="display: flex; gap: 30px;"> 
+    <div class="container mt-4">
+        <form th:action="@{/admin/addCategory}" method="post">
+            <h2>Category Registration</h2>
+            <div style="display: flex; gap: 30px; margin-top: 20px;"> 
                 <div class="mb-3">
-                    <label for="username" class="form-label">Employee Name</label>
-                    <input type="text" class="form-control" id="username" name="username" th:field="${newUser.name}"  required>
+                    <label for="categoryname" class="form-label" >Category Name</label>
+                    <input type="text" class="form-control" id="categoryname" name="categoryname" th:field="*{newCategory.name}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="email" name="email" th:field="${newUser.email}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" th:field="${newUser.password}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="role" class="form-label">Employee Role</label>
-                    <input type="text" class="form-control" id="role" name="role" th:field="${newUser.role}"  required>
+                    <label for="categoryproperties" class="form-label">Number of properties</label>
+                    <input type="number" class="form-control" id="categoryproperties" name="categoryproperties" th:field="*{newCategory.count}" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" style="height: fit-content;">Add Employee</button>
+            <button type="submit" class="btn btn-primary" style="height: fit-content;">Add category</button>
         </form>
-        <hr>
-        <h3>Registered Users</h3>
+
+        <h3 style="margin-top: 40px;">Registered Categories</h3>
         <table class="table table-striped mt-4">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Username</th>
-                    <th>Email Id</th>
-                    <th>Password</th>
+                    <th>Category name</th>
+                    <th>Category property count</th>
                     <th>Actions</th>
                 </tr>
             </thead>
+            <tr th:each=" category: ${categories}">
+                <td th:text="${category.id}">Id</td>
+                <td th:text="${category.name}">Category name</td>
+                <td th:text="${category.property_count}">Category property count</td>
+                <td>
+                    <a class="btn btn-danger text-white">Delete</a>
+                    <a class="btn btn-warning text-white">Edit</a>
+                </td>
+            </tr>
             <tbody>
-                <tr th:each="employee : ${employees}" th:if="${employee.email != userEmail}">
-                    <td th:text="${employee.id}">Id</td>
-                    <td th:text="${employee.name}">Username</td>
-                    <td th:text="${employee.email}">Email Id</td>
-                    <td th:text="${employee.password}">Password</td>
-                    <td>
-                        <a class="btn btn-danger text-white">Delete</a>
-                        <a class="btn btn-warning text-white">Edit</a>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

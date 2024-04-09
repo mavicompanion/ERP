@@ -8,19 +8,25 @@ public class EnterpriseRegistrationDto {
     private String domain;
     private String email;
     private String password;
+    private String contact;
 
     public EnterpriseRegistrationDto() {
     }
 
+    
+
     public EnterpriseRegistrationDto(String name, String description, String address, String domain, String email,
-            String password) {
+            String password, String contact) {
         this.name = name;
         this.description = description;
         this.address = address;
         this.domain = domain;
         this.email = email;
         this.password = password;
+        this.contact = contact;
     }
+
+
 
     public String getName() {
         return name;
@@ -69,5 +75,16 @@ public class EnterpriseRegistrationDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getContact() {
+        return contact;
+    }
+
+
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+    
 
 }

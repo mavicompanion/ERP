@@ -44,7 +44,8 @@ public class EnterpriseService {
             enterpriseDto.getName(), 
             enterpriseDto.getDescription(), 
             enterpriseDto.getAddress(), 
-            enterpriseDto.getDomain()
+            enterpriseDto.getDomain(),
+            enterpriseDto.getContact()
             );
         enterpriseRepository.save(enterprise);
     }

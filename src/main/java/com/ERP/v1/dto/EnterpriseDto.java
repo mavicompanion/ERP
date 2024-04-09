@@ -6,16 +6,20 @@ public class EnterpriseDto {
     private String description;
     private String address;
     private String domain;
+    private String contact;
 
     public EnterpriseDto() {
     }
 
-    public EnterpriseDto(String name, String description, String address, String domain) {
+
+    public EnterpriseDto(String name, String description, String address, String domain, String contact) {
         this.name = name;
         this.description = description;
         this.address = address;
         this.domain = domain;
+        this.contact = contact;
     }
+
 
     public String getName() {
         return name;
@@ -47,6 +51,16 @@ public class EnterpriseDto {
 
     public void setDomain(String domain) {
         this.domain = domain;
+    }
+
+
+    public String getContact() {
+        return contact;
+    }
+
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
 }
