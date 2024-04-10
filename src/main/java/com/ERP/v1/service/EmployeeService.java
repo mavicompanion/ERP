@@ -38,6 +38,20 @@ public class EmployeeService {
         return null;
     }
 
+        // Service method for getting a particular employee with email;
+        public Employee getEmployeeById(Long id)
+        {
+            List<Employee> employees = employeeRepository.findAll();
+            for(Employee emp : employees)
+            {
+                if (emp.getId() == id)
+                {
+                    return emp;
+                }
+            }
+            return null;
+        }
+
     // Service method for creating new employee;
     public void createEmployee(EmployeeDto employeeDto, Enterprise enterprise)
     {
@@ -64,6 +78,12 @@ public class EmployeeService {
                 break;
             }
         }
+    }
+
+    public void deleteEmployeeById(Long Id)
+    {
+        Employee employee = employeeRepository.findById(Id).get();
+        employeeRepository.delete(employee);;
     }
 
     // Service method for gettingAllEmployees of an enterprise;
@@ -98,6 +118,11 @@ public class EmployeeService {
         }
 
         return null;
+    }
+
+    public void editEmployee(Employee employee)
+    {
+        employeeRepository.save(employee);
     }
 
 }

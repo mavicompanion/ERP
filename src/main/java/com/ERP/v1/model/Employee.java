@@ -23,7 +23,6 @@ public class Employee {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "enterprise_id")
-    @Cascade(CascadeType.ALL)
     private Enterprise enterprise;
     @Column(name = "employee_name")
     private String name;
