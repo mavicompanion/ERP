@@ -45,8 +45,11 @@ public class DashboardController {
     public ModelAndView adminDashboard(@AuthenticationPrincipal UserDetails userDetails)
     {
         ModelAndView modelAndView = new ModelAndView("dashboard");
+        
         String userName = userDetails.getUsername();
-        modelAndView.addObject("userName", userName);
+        String usernameString = employeeService.getEmployee(userName).getName().toUpperCase();
+        modelAndView.addObject("userEmail", userName);
+        modelAndView.addObject("userName", usernameString);
         modelAndView.addObject("modules", moduleService.getAllModules());
         modelAndView.addObject("userRole", userDetails.getAuthorities().iterator().next().getAuthority());
         
