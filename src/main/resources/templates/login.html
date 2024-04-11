@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title>Project Pioneers | Login</title>
+</head>
+<body>
+    <div class="main-grid">
+      <div class="column banner">
+            <div class="Name">
+              <div class="logo-div">
+                <div class="logo"></div>
+              </div>
+                <h2 class="heading">Mavi Community</h2>
+                <h4>Mutli-Tenant ERP website</h4>
+            </div>
+
+            <div class="sourcing">
+                <div class="insta"></div>
+                <div class="twitter"></div>
+                <div class="github"></div>
+            </div>
+      </div>
+
+      <div class="column content">
+
+            <div class="login">
+                <h4>Login</h4>
+                <p>Please fill your information below</p>
+                <form th:action="@{/login}" method="post">
+                    <div class="Email form-control">
+                        <i class="ri-mail-fill"></i>
+                        <input type="text" class="control" id="username" name="username" placeholder="Enter Username" required>
+                    </div>
+
+                    <div class="Password form-control">
+                        <i class="ri-lock-2-fill"></i>
+                        <input type="password" class="control" id="password" name="password" placeholder="Enter Password" required>
+                    </div>
+
+                    <div class="button">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <div class="line"></div>
+                <div class="signup">
+                    <a href="/login" id="Forgot_Password">Create an Account?</a>
+                    <a href="/registration">Register Enterprise</a>
+                </div>
+            </div>
+      </div>
+    </div>
+
+</body>
+</html>
