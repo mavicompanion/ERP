@@ -36,8 +36,6 @@ public class LoginController {
         return modelAndView;
     }
 
-    
-
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
     public ModelAndView registration()
     {
@@ -73,5 +71,4 @@ public class LoginController {
     }
 
     
-
 }
