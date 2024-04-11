@@ -36,12 +36,7 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public ModelAndView postLogin()
-    {
-        ModelAndView modelAndView = new ModelAndView("hello");
-        return modelAndView;
-    }
+    
 
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
     public ModelAndView registration()
@@ -77,10 +72,6 @@ public class LoginController {
         return "redirect:/login";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/hello")
-    public ModelAndView helloUser()
-    {
-        return new ModelAndView("hello");
-    }
+    
 
 }
