@@ -76,8 +76,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div th:each="module : ${modules}" style="margin-top: 20px;">
-                <a th:if="${module.role_access == userRole or module.role_access == 'ALL'}" th:href="${module.module_url}" style="text-decoration: none;font-size: larger;color: #868AA5;" th:text="${module.module_name}">Employee Registration</a>
+            <div th:each="module : ${modules}" style="margin-top: 20px;" th:if="${module.role_access == userRole or module.role_access == 'ALL'}">
+                <a th:href="${module.module_url}" style="text-decoration: none;font-size: larger;color: #868AA5;" th:text="${module.module_name}">Employee Registration</a>
             </div>
         </div>
     </div>
