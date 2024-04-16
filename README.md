@@ -31,8 +31,6 @@ We invite developers of all levels to join Mavi and contribute to the future of 
 
 We're currently finalizing setup instructions and documentation to guide you through the process of cloning, installing, and using the application. Information will be available soon at [link will be added later for documentation].
 
-## Let's build and Learn together!
-
 ## Overall layout of project till date
 
 ![image](https://github.com/vishnurchityala/ERP/assets/103362352/7becd0e8-0370-4079-81fe-bc6992e26f29)
