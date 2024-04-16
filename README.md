@@ -1,4 +1,4 @@
-# Multi-Tenant ERP Web App: Open Source ERP for Collaborative Growth
+<img width="916" alt="Screenshot 2024-04-16 at 1 37 17 PM" src="https://github.com/vishnurchityala/ERP/assets/103362352/b760d21e-dc76-4d5e-8611-d93533a26445"># Multi-Tenant ERP Web App: Open Source ERP for Collaborative Growth
 
 ## A Powerful Multi-Tenant ERP Web Application
 
@@ -33,8 +33,11 @@ We're currently finalizing setup instructions and documentation to guide you thr
 
 ## Let's build and Learn together!
 
+## Overall layout of project till date
 
-Database Schema to implementes:
+![image](https://github.com/vishnurchityala/ERP/assets/103362352/7becd0e8-0370-4079-81fe-bc6992e26f29)
+
+## Database Schema to implementes:
 
 <img width="916" alt="Screenshot 2024-04-16 at 1 37 17 PM" src="https://github.com/mavicompanion/ERP/assets/163174694/d24088df-b947-4e71-98a3-495ea897b5c8">
 
