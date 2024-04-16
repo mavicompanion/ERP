@@ -1,4 +1,4 @@
-<img width="916" alt="Screenshot 2024-04-16 at 1 37 17 PM" src="https://github.com/vishnurchityala/ERP/assets/103362352/b760d21e-dc76-4d5e-8611-d93533a26445"># Multi-Tenant ERP Web App: Open Source ERP for Collaborative Growth
+# Multi-Tenant ERP Web App: Open Source ERP for Collaborative Growth
 
 ## A Powerful Multi-Tenant ERP Web Application
 
