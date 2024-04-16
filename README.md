@@ -32,3 +32,9 @@ We invite developers of all levels to join Mavi and contribute to the future of 
 We're currently finalizing setup instructions and documentation to guide you through the process of cloning, installing, and using the application. Information will be available soon at [link will be added later for documentation].
 
 ## Let's build and Learn together!
+
+
+Database Schema to implementes:
+
+<img width="916" alt="Screenshot 2024-04-16 at 1 37 17 PM" src="https://github.com/mavicompanion/ERP/assets/163174694/d24088df-b947-4e71-98a3-495ea897b5c8">
+
