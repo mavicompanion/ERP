@@ -1,5 +1,7 @@
 package com.ERP.v1.model;
 
+import org.springframework.boot.context.properties.bind.ConstructorBinding;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "employees", uniqueConstraints = @UniqueConstraint(columnNames = "employee_email"))
+@Table(name = "employees", uniqueConstraints = @UniqueConstraint(columnNames = "employee_name"))
 public class Employee {
 
     @Id
@@ -23,23 +25,21 @@ public class Employee {
     private Enterprise enterprise;
     @Column(name = "employee_name")
     private String name;
-    @Column(name = "employee_email")
-    private String email;
-    @Column(name = "employee_password")
-    private String password;
-    @Column(name = "employee_role" )
-    private String role;
+    @Column(name = "employee_contact")
+    private String contact;
     
     public Employee() {
     }
 
-    public Employee(Enterprise enterprise, String name, String email, String password, String role) {
+    
+
+    public Employee(Enterprise enterprise, String name, String contact_number) {
         this.enterprise = enterprise;
         this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
+        this.contact = contact_number;
     }
+
+
 
     public Long getId() {
         return id;
@@ -65,28 +65,18 @@ public class Employee {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+
+
+    public String getContact() {
+        return contact;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+
+
+    public void setContact(String contact_number) {
+        this.contact = contact_number;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+    
 
 }

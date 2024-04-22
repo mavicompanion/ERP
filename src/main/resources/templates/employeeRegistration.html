@@ -70,7 +70,7 @@
         </div>
     </nav>
     <hr style="color: #868AA5;margin-left: auto; margin-right: auto;width: 85%;">
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas offcanvas-start" style="border-radius:10px;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Modules</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -81,31 +81,23 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3">
+    <div style="max-width: 75%;margin-right: auto;margin-left: auto;">
         <form id="user-registration-form" method="post" th:action="@{/admin/employeeRegistration}" class="py-3"> 
-            <h2>User Registration</h2>
+            <h2>Employee Registration</h2>
             <div style="display: flex; gap: 30px;"> 
                 <div class="mb-3">
                     <label for="username" class="form-label">Employee Name</label>
-                    <input type="text" class="form-control" id="username" name="username" th:field="${newUser.name}"  required>
+                    <input type="text" class="form-control" id="username" name="username" th:field="${newEmployee.name}"  required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="email" name="email" th:field="${newUser.email}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" th:field="${newUser.password}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="role" class="form-label">Employee Role</label>
-                    <input type="text" class="form-control" id="role" name="role" th:field="${newUser.role}"  required>
+                    <label for="username" class="form-label">Employee Contact</label>
+                    <input type="text" class="form-control" id="contact" name="username" th:field="${newEmployee.contact}"  required>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" style="height: fit-content;">Add Employee</button>
         </form>
         <hr>
-        <h3>Registered Users</h3>
+        <h3>Registered Employees</h3>
 
         <div style="width: fit-content;margin-top:40px;">
             <div style="border-bottom: 1px solid #ddd;">
@@ -113,9 +105,8 @@
                     <thead>
                         <tr>
                             <th style="width: 40px;">Id</th>
-                            <th style="width:200px;">Username</th>
-                            <th style="width:200px;" >Email Id</th>
-                            <th style="width:200px;">Password</th>
+                            <th style="width:200px;">Employee Name</th>
+                            <th style="width:200px;">Employee Contact</th>
                             <th style="width:180px;">Actions</th>
                         </tr>
                     </thead>
@@ -125,12 +116,11 @@
             <div style="max-height: 500px;overflow-y: scroll;width: fit-content;">
                 <table class="table table-striped" style="width: fit-content;">
                     <tbody>
-                        <div th:each=" employee : ${employees}" th:if="${employee.email != userEmail}">
+                        <div th:each="employee : ${employees}">
                             <tr>
                                 <td th:text="${employee.id}" style="width: 60px;">Id</td>
-                                <td th:text="${employee.name}" style="width:200px;">Username</td>
-                                <td th:text="${employee.email}" style="width:200px;">Email Id</td>
-                                <td th:text="${employee.password}" style="width:200px;">Password</td>
+                                <td th:text="${employee.name}" style="width:200px;">Employee Name</td>
+                                <td th:text="${employee.contact}" style="width:200px;">Employee Contact</td>
                                 <td style="display: flex; gap: 10px;">
                                     <form th:action="@{/admin/deleteEmployee/{id}(id=${employee.id})}" method="post" onsubmit="return confirm('Are you sure you want to delete this employee?')"><button class="btn btn-outline-danger" type="submit">Delete</button></form>
                                     <a class="btn btn-warning text-white" data-bs-toggle="collapse" th:href="@{#collapseExample-{id}(id=${employee.id})}" role="button" aria-expanded="false">Edit</a>
@@ -139,16 +129,13 @@
                             <form th:action="@{/admin/editEmployee/{id}(id=${employee.id})}" method="post">
                             <tr class="collapse" th:id="${'collapseExample-' + employee.id}">
                                 <td>
-                                    <input type="text" class="form-control" style="width: 40px;" th:value="${employee.id}"readonly>
+                                    <input type="text" class="form-control" style="width: 40px;" th:value="${employee.id}" readonly>
                                 </td>
                                 <td style="width:200px;">
-                                    <input type="text" class="form-control"   th:field="${editEmployee.name}" th:value="${employee.name}" th:placeholder="${employee.name}">
+                                    <input type="text" class="form-control"   th:field="${editEmployee.name}"  th:placeholder="${employee.name}">
                                 </td>
                                 <td style="width:200px;">
-                                    <input type="text" class="form-control" th:value="${employee.email}" th:placeholder="${employee.email}" th:field="${editEmployee.email}">
-                                </td>
-                                <td style="width:200px;">
-                                    <input type="text" class="form-control" th:value="${employee.password}" th:placeholder="${employee.password}" th:field="${editEmployee.password}">
+                                    <input type="text" class="form-control"   th:field="${editEmployee.contact}" th:placeholder="${employee.contact}">
                                 </td>
                                 <td>
                                     <button class="btn btn-success text-white" type="submit">Save</button>
@@ -162,8 +149,8 @@
         </div>
         
     </div>
-    <div class="container-fluid py-1" style="background-color: #efefef;margin-top: 120px; width: 100%; text-align: center; font-family: Arial, Helvetica, sans-serif;font-weight:900; font-size: small;">
-        <i class="ri-copyright-line"></i> Project by Mavi community
+    <div class="container-fluid py-1" style="background-color: #efefef;margin-top: 120px; width: 100%; text-align: center; font-family: Arial, Helvetica, sans-serif;font-weight:900; font-size: small; position: fixed; bottom: 0;">
+        <i class="ri-copyright-line"></i> Project by Project Pioneers
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
