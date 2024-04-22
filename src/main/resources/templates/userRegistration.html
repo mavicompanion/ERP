@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" th:href="@{/images/building-fill.png}">
+</head>
+<body>
+    <nav>
+        <div class="py-4 d-flex" style="padding-left:100px;padding-right:100px;">
+            <div class="d-flex align-items-center">
+                <a class="btn btn-tertiary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                    <i class="ri-menu-line" style="height: 50px;"></i>
+                </a>
+                <a class="navbar-brand" href="/dashboard">ERP SOFTWARE</a>
+            </div>
+            <div class="d-flex gap-3 ms-auto me-auto panels">
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-tertiary" type="button">
+                        <i class="ri-layout-2-fill" style="color: #017df9;"></i>
+                    </a>
+                    <a class="navbar-brand" href="/dashboard" style="color: #017df9;">Dashboard</a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-tertiary" type="button" >
+                        <i class="ri-shake-hands-fill"></i>
+                    </a>
+                    <a class="navbar-brand" href="">Bussiness</a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-tertiary" type="button" >
+                        <i class="ri-bank-card-2-fill"></i>
+                    </a>
+                    <a class="navbar-brand" href="">Payment</a>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-5 ms-auto">
+                <div class="d-flex align-items-center gap">
+                    <a href="" class="btn btn-tertiary">
+                        <i class="ri-notification-2-fill"></i>
+                    </a>
+                    <a href="" class="btn btn-tertiary">
+                        <i class="ri-chat-1-fill"></i>
+                    </a>
+                    <div class="dropdown px-3 py-3 ms-3" style="background-color:#F5F5F7; border-radius:12px;">
+                        <a class="nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ri-user-line me-2"></i>
+                            <div th:text="${userEmail}"></div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="nav-item">
+                                <form th:action="@{/logout}" method="post">
+                                    <button class="btn btn-tertiary" type="submit" value="Sign Out"/>Log Out</button>
+                                </form>
+                            </li>
+                        </div>
+                    <div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+    <hr style="color: #868AA5;margin-left: auto; margin-right: auto;width: 85%;">
+    <div class="offcanvas offcanvas-start" style="border-radius:10px;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Modules</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div th:each="module : ${modules}" style="margin-top: 20px;">
+                <a th:if="${module.role_access == userRole or module.role_access == 'ALL'}" th:href="${module.module_url}" style="text-decoration: none;font-size: larger; color: #868AA5;" th:text="${module.module_name}">Employee Registration</a>
+            </div>
+        </div>
+    </div>
+    <div style="max-width: 75%;margin-right: auto;margin-left: auto;">
+        <form id="user-registration-form" th:action="@{/admin/userRegistration}" method="post" class="py-3"> 
+            <h2>User Registration</h2>
+            <div style="display: flex; gap: 30px;"> 
+                <div class="mb-3">
+                    <label for="id" class="form-label">Employee Id</label>
+                    <input type="text" th:field="${newUserDto.empid}" class="form-control" id="id" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email"   class="form-label">User Email</label>
+                    <input type="text" th:field="${newUserDto.email}" class="form-control" id="email" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">User Password</label>
+                    <input type="password" class="form-control"  th:field="${newUserDto.password}" id="password" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">User Role</label>
+                    <input type="text" class="form-control" th:field="${newUserDto.role}" id="role" name="role" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: fit-content;">Add User</button>
+        </form>
+        <hr>
+        <h3>Registered Users</h3>
+
+        <div style="width: fit-content;margin-top:40px;">
+            <div style="border-bottom: 1px solid #ddd;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;">Id</th>
+                            <th style="width:200px;">User Email</th>
+                            <th style="width:200px;">User Password</th>
+                            <th style="width:180px;">Actions</th>
+                        </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+            <div style="max-height: 500px;overflow-y: scroll;width: fit-content;">
+                <table class="table table-striped" style="width: fit-content;">
+                    <tbody>
+                        <div th:each="user : ${users}">
+                            <tr>
+                                <td th:text="${user.id}" style="width: 60px;">Id</td>
+                                <td th:text="${user.email}" style="width:200px;">User Email</td>
+                                <td th:text="${user.password}" style="width:200px;">User Password</td>
+                                <td style="display: flex; gap: 10px;">
+                                    <form th:action="@{/admin/deleteUser/{id}(id=${user.id})}" method="post" onsubmit="return confirm('Are you sure you want to delete this employee?')"><button class="btn btn-outline-danger" type="submit">Delete</button></form>
+                                    <a class="btn btn-warning text-white" data-bs-toggle="collapse" th:href="@{#collapseExample-{id}(id=${user.id})}" role="button" aria-expanded="false">Edit</a>
+                                </td>
+                            </tr> 
+                            <form th:action="@{/admin/editUser/{id}(id=${user.id})}" method="post">
+                            <tr class="collapse"  th:id="${'collapseExample-' + user.id}">
+                                <td>
+                                    <input type="text" class="form-control" style="width: 40px;" th:value="${user.id}" readonly>
+                                </td>
+                                <td style="width:200px;">
+                                    <input type="text" class="form-control"  th:field="${editUserDto.email}" th:placeholder="${user.email}">
+                                </td>
+                                <td style="width:200px;">
+                                    <input type="text" class="form-control" th:field="${editUserDto.password}" th:placeholder="${user.password}">
+                                </td>
+                                <td>
+                                    <button class="btn btn-success text-white" type="submit">Save</button>
+                                </td>
+                            </tr>
+                            </form>
+                        </div>
+                    </tbody>
+                </table>
+            </div> 
+        </div>
+        
+    </div>
+    <div class="container-fluid py-1" style="background-color: #efefef;margin-top: 120px; width: 100%; text-align: center; font-family: Arial, Helvetica, sans-serif;font-weight:900; font-size: small; position: fixed; bottom: 0;">
+        <i class="ri-copyright-line"></i> Project by Project Pioneers
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

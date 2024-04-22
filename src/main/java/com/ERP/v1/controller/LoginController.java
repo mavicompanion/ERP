@@ -10,7 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ERP.v1.dto.EmployeeDto;
 import com.ERP.v1.dto.EnterpriseDto;
 import com.ERP.v1.dto.EnterpriseRegistrationDto;
+import com.ERP.v1.model.AppUser;
+import com.ERP.v1.model.Employee;
 import com.ERP.v1.model.Enterprise;
+import com.ERP.v1.service.AppUserService;
 import com.ERP.v1.service.EmployeeService;
 import com.ERP.v1.service.EnterpriseService;
 
@@ -22,6 +25,9 @@ public class LoginController {
 
     @Autowired
     EnterpriseService enterpriseService;
+
+    @Autowired
+    AppUserService appUserService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String noUrl()
@@ -58,14 +64,10 @@ public class LoginController {
         enterpriseService.createEnterprise(enterpriseDto);
 
         Enterprise enterprise = enterpriseService.getEnterprise(enterpriseRegistrationDto.getDomain());
-        EmployeeDto employeeDto = new EmployeeDto(
-            "admin", 
-            enterpriseRegistrationDto.getEmail(), 
-            enterpriseRegistrationDto.getPassword(), 
-            "ADMIN"
-        );
-
-        employeeService.createEmployee(employeeDto, enterprise);
+        Employee employee = new Employee(enterprise, "ADMIN",enterpriseRegistrationDto.getContact());
+        employeeService.createEmployee(enterprise, "ADMIN",enterpriseRegistrationDto.getContact());
+        Employee employee2 = employeeService.getEmployee(employee.getName());
+        appUserService.createUser(enterpriseRegistrationDto.getEmail(), enterpriseRegistrationDto.getPassword(), employee2, "ADMIN");
 
         return "redirect:/login";
     }
