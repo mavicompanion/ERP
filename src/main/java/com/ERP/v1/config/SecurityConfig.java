@@ -13,10 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.ERP.v1.model.AppUser;
 import com.ERP.v1.model.Employee;
-import com.ERP.v1.repository.AppUserRepository;
-import com.ERP.v1.service.AppUserService;
 import com.ERP.v1.service.EmployeeService;
 
 @Configuration
@@ -24,7 +21,7 @@ import com.ERP.v1.service.EmployeeService;
 public class SecurityConfig {
 
     @Autowired
-    AppUserService appUserService;
+    EmployeeService employeeService;
 
     // Filter chain for authorization.
     @Bean
@@ -53,19 +50,19 @@ public class SecurityConfig {
             @Override
             public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
             {
-                AppUser appUser = appUserService.getAppUser(email);
+                Employee employee = employeeService.getEmployee(email);
 
                  // If the user is not found, throw an exception
-                if (appUser == null) {
+                if (employee == null) {
                     throw new UsernameNotFoundException("Username not found");
                 }
                 else
                 {
                     @SuppressWarnings("deprecation")
                     UserDetails user = User
-                    .withDefaultPasswordEncoder().username(appUser.getEmail().toString())
-                    .password(appUser.getPassword())
-                    .roles(appUser.getRole())
+                    .withDefaultPasswordEncoder().username(employee.getEmail())
+                    .password(employee.getPassword())
+                    .roles(employee.getRole())
                     .build();
                     return user;
                 }

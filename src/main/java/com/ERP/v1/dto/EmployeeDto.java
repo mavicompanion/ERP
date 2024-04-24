@@ -5,19 +5,19 @@ public class EmployeeDto {
     
     // Data transfer object for Employee;
     private String name;
-    private String contact;
+    private String email;
+    private String password;
+    private String role;
     
     public EmployeeDto() {
     }
 
-    
-
-    public EmployeeDto(String name, String contact) {
+    public EmployeeDto(String name, String email, String password, String role) {
         this.name = name;
-        this.contact = contact;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
-
-
 
     public String getName() {
         return name;
@@ -27,16 +27,30 @@ public class EmployeeDto {
         this.name = name;
     }
 
-
-
-    public String getContact() {
-        return contact;
+    public String getEmail() {
+        return email;
     }
 
-
-
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    
 
 }
