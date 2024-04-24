@@ -4,17 +4,17 @@ public class EditEmployeeDto {
  
     private Long id;
     private String name;
-    private String contact;
+    private String email;
+    private String password;
 
     public EditEmployeeDto() {
     }
     
-    
-
-    public EditEmployeeDto(Long id, String name, String contact) {
+    public EditEmployeeDto(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
-        this.contact = contact;
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -33,14 +33,20 @@ public class EditEmployeeDto {
         this.name = name;
     }
 
-    public String getContact() {
-        return contact;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getPassword() {
+        return password;
+    }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     
